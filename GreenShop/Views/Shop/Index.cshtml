@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Shop | Green Shop";
+}
+@await Html.PartialAsync("~/Views/Partials/Sharemodal.cshtml")
+<div class="col-12 align-content-center">
+    <a class="btn btn-primary" asp-controller="Shop" asp-action="AddProduct">Add Product</a>
+</div>
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-3">
+            <div class="card">
+                <img class="card-img-top" src="@product.ImageUrl">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text overflow-hidden">@product.Caption</p>
+                </div>
+                <div class="card-footer align-content-around">
+                    <div class="row">
+                        <p class="col-6">In Stock: @product.Stock</p>
+                        <p class="col-6">Price: @product.Price</p>
+                    </div>
+                    <div class="row">
+                        <a class="col-6 btn btn-danger" type="button" asp-controller="Shop" asp-action="ShowProduct" asp-route-id=@product.Id>View</a>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <a class="col-6 btn btn-primary" asp-controller="Shop" asp-action="EditProduct" asp-route-id=@product.Id type="button">Edit</a>
+                        <a class="col-6 btn btn-secondary" type="button" asp-controller="Shop" asp-action="ShowProduct" asp-route-id=@product.Id>Remove</a>
+                    </div>
+                    <br/>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

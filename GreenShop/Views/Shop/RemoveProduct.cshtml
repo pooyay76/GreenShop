@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Remove Product";
+}
+@if (TempData["OperationStatus"].ToString() == "Success")
+{
+    <div class="alert alert-success align-content-center">
+        <p class="text-muted">Operation Completed Successfully</p>
+    </div>
+}
+@if (TempData["OperationStatus"].ToString() == "Fail")
+{
+    <div class="alert alert-danger align-content-center">
+        <p class="text-muted">Operation Failed</p>
+    </div>
+}

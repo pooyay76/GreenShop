@@ -1,0 +1,30 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  margin-bottom: 0;
+  background-color: #fff;
+  color: #000;
+}
+
+main {
+  background-color: #fff;
+  width: 100%;
+  color: #000;
+  overflow: hidden;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+footer {
+  background-color: #fff;
+  color: #000;
+}
+/*# sourceMappingURL=main.css.map */

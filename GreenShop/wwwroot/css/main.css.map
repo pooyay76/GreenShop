@@ -1,0 +1,15 @@
+{
+    "version": 3,
+    "mappings": "AEAA,AAAA,CAAC,CAAC;EACE,UAAU,EAAE,UAAU;CAAG;;AAE7B,AAAA,IAAI,CAAC;EACD,OAAO,EDDD,CAAC;ECEP,MAAM,EDHD,CAAC;CCGY;;ACLtB,AAAA,GAAG,CAAC;EACA,aAAa,EAAE,CAAC;EAChB,gBAAgB,EFQG,IAAI;EEPvB,KAAK,EFQQ,IAAI;CERQ;;AEH7B,AAAA,IAAI,CAAC;EACD,gBAAgB,EJKI,IAAI;EIJxB,KAAK,EAAE,IAAI;EACX,KAAK,EJIS,IAAI;EIHlB,QAAQ,EAAE,MAAM;EAChB,aAAa,EAAE,IAAI;EACnB,UAAU,EAAE,IAAI;CAAG;;ACNvB,AAAA,MAAM,CAAC;EACH,gBAAgB,ELaM,IAAI;EKZ1B,KAAK,ELaW,IAAI;CKbQ",
+    "sources": [
+        "../../main.sass",
+        "../sass/_variables.sass",
+        "../sass/_reset.sass",
+        "../sass/_navbar.sass",
+        "../sass/_sidebar.sass",
+        "../sass/_main.sass",
+        "../sass/_footer.sass"
+    ],
+    "names": [],
+    "file": "main.css"
+}

@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ProductViewModel
+@{
+    ViewData["Title"] = "Product";
+}
+<div class="row">
+    <div class="display-3 col-12 align-content-center">
+        @Model.Name
+    </div>
+</div>
+
+<div class="row  align-content-center">
+    <div class="col-12"> 
+        <img class="img-fluid" src=@Model.ImageUrl />
+    </div>
+</div>
+<div class="row">
+    <div class="text col-12 align-content-center">
+        @Model.Caption
+    </div>
+</div>
+<div class="row">
+    <div class="text-muted col-6 align-content-center">
+        @Model.Stock
+    </div>
+    <div class="text-muted col-6 align-content-center">
+        @Model.Price
+    </div>
+</div>
+<div class="btn-group">
+<a asp-controller="Shop" asp-action="EditProduct" asp-route-id=@Model.Id class="btn btn-danger">Edit</a>
+<a asp-controller="Shop" asp-action="RemoveProduct"  asp-route-id=@Model.Id class="btn btn-secondary">Remove</a>
+</div>

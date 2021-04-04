@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Edit Product";
+}
+@model ProductViewModel
+
+@if (TempData["OperationStatus"] != null)
+{
+    @if (TempData["OperationStatus"].ToString() == "Success")
+    {
+        <div class="alert alert-success">Operation Completed Successfully</div>
+    }
+    @if (TempData["OperationStatus"].ToString() == "Fail")
+    {
+        <div class="alert alert-danger">Operation Failed!</div>
+    }
+}
+
+<form class="form-group" method="post">
+    <div class="row">
+        <div class="col-6">
+            <label class="col-form-label" asp-for="Name"></label>
+            <input class="form-control" type="text" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-muted text-danger"></span>
+        </div>
+        <div class="col-6">
+            <label class="col-form-label" asp-for="ImageUrl"></label>
+            <input class="form-control" type="text" asp-for="ImageUrl" />
+            <span class="text-muted text-danger" asp-validation-for="ImageUrl"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <label class="col-form-label" asp-for="Price"></label>
+            <input type="number" class="form-control" asp-for="Price" />
+            <span class="text-muted text-danger" asp-validation-for="Price"></span>
+        </div>
+        <div class="col-6">
+            <label class="col-form-label" asp-for="Stock"></label>
+            <input class="form-control" type="number" asp-for="Stock" />
+            <span class="text-muted text-danger" asp-validation-for="Stock"></span>
+        </div>
+    </div>
+    <div class="col-12 align-content-center">
+        <label class="col-form-label" asp-for="Caption"></label>
+        <input type="text" class="form-control" asp-for="Caption" />
+        <span asp-validation-for="Caption" class="text-muted text-danger"></span>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
