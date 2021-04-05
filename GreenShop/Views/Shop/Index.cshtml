@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Shop | Green Shop";
 }
-@await Html.PartialAsync("~/Views/Partials/Sharemodal.cshtml")
+
 <div class="col-12 align-content-center">
     <a class="btn btn-primary" asp-controller="Shop" asp-action="AddProduct">Add Product</a>
 </div>
@@ -23,6 +23,7 @@
                     </div>
                     <div class="row">
                         <a class="col-6 btn btn-danger" type="button" asp-controller="Shop" asp-action="ShowProduct" asp-route-id=@product.Id>View</a>
+                        @await Component.InvokeAsync("ShareModal", product)
                     </div>
                     <br/>
                     <div class="row">
