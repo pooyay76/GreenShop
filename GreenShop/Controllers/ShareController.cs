@@ -20,7 +20,7 @@ namespace GreenShop.Controllers
         }
 
         [HttpPost]
-        public void ShareProductByEmail(long id,ShareInfo info)
+        public IActionResult ShareProductByEmail(long id,ShareInfo info)
         {
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.Development.Json").Build();
             var product = _context.Products.SingleOrDefault(x => x.Id == id);
@@ -39,20 +39,28 @@ namespace GreenShop.Controllers
                 {
                     From = new MailAddress(config["Email:Username"]),
                     Subject = $"Green Shop Product ({product.Name})",
-                    Body = $"<h1>{product.Name}</h1>\n<img src={product.ImageUrl}>\n{product.Caption}\nPrice: {product.Price}\nIn Stock: {product.Stock}\n\nLink: localhost:5001/Products/{id}",
-                    IsBodyHtml = true,
+                    Body = $"<h1>{product.Name}</h1>\n<img src={product.ImageUrl}>\n{product.Caption}\nPrice: {product.Price}\nIn Stock: {product.Stock}\n\n<a href={Url.Action("ShowProduct","Shop",new {id=product.Id})}></a>"
                 };
-                mailMessage.To.Add(info.TargetEmail);
-
-                smtpClient.Send(mailMessage);
-                TempData["OperationStatus"] = "Success";
+                try
+                {
+                    smtpClient.Send(mailMessage);
+                    TempData["OperationStatus"] = "Success";
+                }
+                catch
+                {
+                    TempData["OperationStatus"] = "Fail";
+                }
+                finally
+                {
+                    smtpClient.Dispose();
+                }
             }
             else
             {
                 TempData["OperationStatus"] = "Fail";
             }
 
-            Redirect(Url.Action("Index", "Shop"));
+            return RedirectToAction("Index", "Shop");
         }
     }
 }

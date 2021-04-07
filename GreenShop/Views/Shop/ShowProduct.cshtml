@@ -3,7 +3,7 @@
 *@
 @model ProductViewModel
 @{
-    ViewData["Title"] = "Product";
+    ViewData["Title"] = Model.Name;
     ViewData["ProductId"] = Model.Id;
 }
 <div class="row">
@@ -32,6 +32,6 @@
 </div>
 <div class="btn-group">
     <a asp-controller="Shop" asp-action="EditProduct" asp-route-id=@Model.Id class="btn btn-info">Edit</a>
-    <a asp-controller="Shop" asp-action="RemoveProduct"  asp-route-id=@Model.Id class="btn btn-secondary">Remove</a>
+    <a asp-controller="Shop" asp-action="RemoveProduct"  asp-route-id=@Model.Id class="btn btn-danger">Remove</a>
 </div>
 <partial name="Partials/SharePanel" model="new ShareInfo()"/>
