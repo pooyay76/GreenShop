@@ -11,10 +11,17 @@ namespace GreenShop.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Caption is required")]
         public string Caption { get; set; }
+        [Display(Name = "Image Url")]
+        [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
+
+
         [Required(ErrorMessage = "Unit price is required")]
-        public double Price { get; set; }
+        [DataType(DataType.Currency)]
+        [Range(0.01, 100_000_000_000)]
+        public decimal Price { get; set; }
         [Required(ErrorMessage = "Stock count is required")]
+        [Range(1,10_000_000)]
         public int Stock { get; set; }
 
     }

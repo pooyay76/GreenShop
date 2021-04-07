@@ -15,9 +15,8 @@ namespace GreenShop.Migrations
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Caption = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Price = table.Column<double>(type: "float", maxLength: 20, nullable: false),
-                    Stock = table.Column<int>(type: "int", maxLength: 20, nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    Price = table.Column<decimal>(type: "decimal(20,2)", precision: 20, scale: 2, nullable: false),
+                    Stock = table.Column<int>(type: "int", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {

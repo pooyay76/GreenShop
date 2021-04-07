@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using GreenShop.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
+using GreenShop.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GreenShop
 {
@@ -22,22 +24,6 @@ namespace GreenShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<SmtpClient>(serviceProvider =>
-            {
-                var config = serviceProvider.GetRequiredService<IConfiguration>().GetSection("Email");
-                return new SmtpClient()
-                {
-                    Host = config.GetValue<string>("Host"),
-                    Port = config.GetValue<int>("Port"),
-                    Credentials = new NetworkCredential()
-                    {
-                        UserName = config.GetValue<string>("Username"),
-                        Password = config.GetValue<string>("Password")
-
-                    }
-
-                };
-            });
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DevSql")));
             services.AddControllersWithViews();
         }

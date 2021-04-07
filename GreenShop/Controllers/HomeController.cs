@@ -3,17 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using GreenShop.Contexts;
-using System.Linq;
+
 namespace GreenShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly ShopContext _context;
 
-        public HomeController(ILogger<HomeController> logger,ShopContext context )
+        public HomeController(ShopContext context )
         {
-            _logger = logger;
             _context = context;
         }
 

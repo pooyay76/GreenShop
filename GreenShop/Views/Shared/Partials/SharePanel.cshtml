@@ -1,0 +1,10 @@
+﻿@using System.Net
+@model ShareInfo
+<div class="row justify-content-center">
+    <form class="form-group" method="post">
+    <label class="col-form-label" asp-for="TargetEmail"></label>
+    <input class="form-control" asp-for="TargetEmail"/>
+    <span asp-validation-for="TargetEmail"></span>
+    <button type="submit" asp-controller="Share" asp-action="ShareProductByEmail" asp-route-id=@ViewData["ProductId"]>Share</button>
+    </form>
+</div>

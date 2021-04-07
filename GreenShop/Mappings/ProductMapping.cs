@@ -16,8 +16,8 @@ namespace GreenShop.Mappings
             builder.Property(model => model.Caption).HasMaxLength(1000).IsRequired();
             builder.Property(model => model.ImageUrl).HasMaxLength(500);
             builder.Property(model => model.Stock).HasMaxLength(20).IsRequired();
-            builder.Property(model => model.Price).HasMaxLength(20).IsRequired();
-            builder.Property(model => model.IsDeleted).HasDefaultValue(false);
+            builder.Property(model => model.Price).HasPrecision(20, 2);
+
         }
     }
 }

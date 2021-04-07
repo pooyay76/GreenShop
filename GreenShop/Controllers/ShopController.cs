@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using GreenShop.Contexts;
 using GreenShop.Models;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GreenShop.Controllers
@@ -9,17 +8,15 @@ namespace GreenShop.Controllers
     public class ShopController : Controller
     {
         private readonly ShopContext _context;
-        private readonly IWebHostEnvironment _env;
 
-        public ShopController(ShopContext context, IWebHostEnvironment env)
+        public ShopController(ShopContext context)
         {
             _context = context;
-            _env = env;
         }
 
         public IActionResult Index()
         {
-            var products = _context.Products.Where(product => product.IsDeleted == false).Select(product =>
+            var products = _context.Products.Select(product =>
                 new ProductViewModel
                 {
                     ImageUrl = product.ImageUrl,
@@ -64,7 +61,7 @@ namespace GreenShop.Controllers
             if (toBeRemoved != null)
             {
                 TempData["OperationStatus"] = "Success";
-                toBeRemoved.IsDeleted = true;
+                _context.Products.Remove(toBeRemoved);
                 _context.SaveChanges();
             }
             else

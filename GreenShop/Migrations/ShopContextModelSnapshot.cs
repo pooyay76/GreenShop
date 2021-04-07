@@ -34,19 +34,14 @@ namespace GreenShop.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<double>("Price")
-                        .HasMaxLength(20)
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasPrecision(20, 2)
+                        .HasColumnType("decimal(20,2)");
 
                     b.Property<int>("Stock")
                         .HasMaxLength(20)
