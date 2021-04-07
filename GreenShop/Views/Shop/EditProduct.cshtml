@@ -3,17 +3,6 @@
 }
 @model ProductViewModel
 
-@if (TempData["OperationStatus"] != null)
-{
-    @if (TempData["OperationStatus"].ToString() == "Success")
-    {
-        <div class="alert alert-success">Operation Completed Successfully</div>
-    }
-    @if (TempData["OperationStatus"].ToString() == "Fail")
-    {
-        <div class="alert alert-danger">Operation Failed!</div>
-    }
-}
 
 <form class="form-group" method="post">
     <div class="row">
@@ -45,6 +34,6 @@
         <input type="text" class="form-control" asp-for="Caption" />
         <span asp-validation-for="Caption" class="text-muted text-danger"></span>
     </div>
-    <br/>
+    <br />
     <button type="submit" class="btn btn-success">Submit</button>
 </form>

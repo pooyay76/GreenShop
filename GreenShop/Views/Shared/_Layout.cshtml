@@ -8,28 +8,41 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-dark bg-success">
-    <a class="navbar-brand p-1" asp-controller="Home" asp-action="Index">Green Shop</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-controller="Shop" asp-action="Index">Shop</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-        </li>
-    </ul>
-</nav>
+    <nav class="navbar navbar-expand navbar-dark bg-success" style="height: 20vh; max-height: 55px">
+        <a class="navbar-brand p-1" asp-controller="Home" asp-action="Index">Green Shop</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Shop" asp-action="Index">Shop</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+            </li>
+        </ul>
+    </nav>
+    @if (TempData["OperationStatus"] != null)
+    {
+        @if (TempData["OperationStatus"].ToString() == "Success")
+        {
+            <div class="alert alert-success">Operation Completed Successfully</div>
+        }
+        @if (TempData["OperationStatus"].ToString() == "Fail")
+        {
+            <div class="alert alert-danger">Operation Failed!</div>
+        }
+        
+        ViewData["OperationStatus"] = null;
+    }
 <main class="container-fluid jumbotron text-center mr-auto ml-auto">
-    @RenderBody()
-</main>
-<script src="~/js/jquery.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA==" crossorigin="anonymous"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    
+        @RenderBody()
+    </main>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA==" crossorigin="anonymous"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>

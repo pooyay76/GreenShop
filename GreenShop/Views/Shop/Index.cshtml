@@ -12,24 +12,24 @@
         <div class="col-3">
             <div class="card">
                 <img class="card-img-top" src="@product.ImageUrl" width="300" height="300">
-                <div class="card-body">
+                <div class="card-body" style="display: block; height: 200px; overflow: hidden">
                     <h5 class="card-title">@product.Name</h5>
-                    <p style="max-height: 200px" class="card-text overflow-hidden">@product.Caption...</p>
+                    <p class="card-text overflow-hidden">@product.Caption</p>
                 </div>
                 <div class="card-footer align-content-around">
                     <div class="row">
+                        <p class="col-6">Price: @product.Price$</p>
                         <p class="col-6">In Stock: @product.Stock</p>
-                        <p class="col-6">Price: @product.Price</p>
                     </div>
                     <div class="row justify-content-center">
                         <a class="col-6 btn btn-secondary" type="button" asp-controller="Shop" asp-action="ShowProduct" asp-route-id=@product.Id>More</a>
                     </div>
-                    <br/>
+                    <br />
                     <div class="row justify-content-center">
                         <a class="col-5 btn btn-info" asp-controller="Shop" asp-action="EditProduct" asp-route-id=@product.Id type="button">Edit</a>
                         <a class="col-5 btn btn-danger" type="button" asp-controller="Shop" asp-action="RemoveProduct" asp-route-id=@product.Id>Remove</a>
                     </div>
-                    <br/>
+                    <br />
                 </div>
 
             </div>

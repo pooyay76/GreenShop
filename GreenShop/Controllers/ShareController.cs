@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using GreenShop.Contexts;
 using GreenShop.Models;
+using GreenShop.Modules;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -18,7 +17,7 @@ namespace GreenShop.Controllers
         {
             _context = context;
         }
-
+        
         [HttpPost]
         public IActionResult ShareProductByEmail(long id,ShareInfo info)
         {
@@ -27,32 +26,15 @@ namespace GreenShop.Controllers
             if (product != null)
             {
 
-                SmtpClient smtpClient = new SmtpClient(config["Email:Host"])
-                {
-                    Port = int.Parse(config["Email:Port"]),
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(config["Email:Username"],config["Email:Password"]),
-                    EnableSsl = true
-                };
-
-                var mailMessage = new MailMessage
-                {
-                    From = new MailAddress(config["Email:Username"]),
-                    Subject = $"Green Shop Product ({product.Name})",
-                    Body = $"<h1>{product.Name}</h1>\n<img src={product.ImageUrl}>\n{product.Caption}\nPrice: {product.Price}\nIn Stock: {product.Stock}\n\n<a href={Url.Action("ShowProduct","Shop",new {id=product.Id})}></a>"
-                };
+                var emailBuilder = new EmailBuilder(product, info.TargetEmail);
                 try
                 {
-                    smtpClient.Send(mailMessage);
+                    emailBuilder.SendEmail();
                     TempData["OperationStatus"] = "Success";
                 }
                 catch
                 {
                     TempData["OperationStatus"] = "Fail";
-                }
-                finally
-                {
-                    smtpClient.Dispose();
                 }
             }
             else

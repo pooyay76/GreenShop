@@ -67,7 +67,7 @@ namespace GreenShop.Controllers
             else
                 TempData["OperationStatus"] = "Fail";
 
-            return View();
+            return RedirectToAction("Index","Shop");
         }
 
         public IActionResult ShowProduct(int id)
@@ -118,7 +118,7 @@ namespace GreenShop.Controllers
                 TempData["OperationStatus"] = "Success";
                 _context.Products.Update(toBeEdited);
                 _context.SaveChanges();
-                return View();
+                return RedirectToAction("Index","Shop");
             }
             else
             {
